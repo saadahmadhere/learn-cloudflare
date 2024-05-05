@@ -13,6 +13,17 @@
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return new Response('Hello World!');
+		console.log({ request });
+		if (request.method === 'GET') {
+			return Response.json({
+				message: 'you sent a get request',
+			});
+		}
+		if (request.method === 'POST') {
+			return Response.json({
+				message: 'you sent a post request',
+			});
+		}
+		return new Response('Hello World!, hi there...');
 	},
 };
